@@ -16,5 +16,3 @@ if ($_REQUEST['rota'] == 'deleteCustomers') {
 
    ClientesService::deleteCustomers($_REQUEST['id']);
 }
-
- 
