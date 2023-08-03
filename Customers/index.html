@@ -1,0 +1,103 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css">
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
+  <script src="../semantic/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <script type="text/javascript" src="../ServiceJs/ClientesService.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+
+</head>
+
+<body>
+
+  <div class="ui three item menu">
+    <a onclick="openModalCustomers()" class="active item">Cadastrar Clientes</a>
+    <a class="item">Reviews</a>
+    <a class="item">Upcoming Events</a>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <form style=" position : relative; width: 700px;" class="ui form">
+    <div class="field ">
+      <label>Filtros</label>
+      <div class="fields">
+        <div class="field">
+          <select id="select" class="select ui dropdown"></select>
+        </div>
+        <div class="field">
+          <input disabled type="text" name="shipping[first-name]" placeholder="Filtrar...">
+        </div>
+        <div class="field">
+          <input disabled type="text" name="shipping[first-name]" placeholder="Filtrar...">
+        </div>
+        <div class="field">
+          <input disabled type="text" name="shipping[first-name]" placeholder="Filtrar...">
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="ui divider"></div>
+
+  <form style="display: none; position : relative; width: 700px;" id="modalInserCostumer"
+    class="ui form modalInserCostumer">
+
+    <div class="field ">
+      <label></label>
+      <div class="fields">
+        <div class="field">
+          <input disabled id="id" type="text" name="shipping[first-name]" placeholder="Codigo">
+        </div>
+
+        <div class="field">
+          <input id="nome" type="text" name="shipping[first-name]" placeholder="Nome">
+        </div>
+
+        <div class="field">
+          <input id="cpf" type="text" placeholder="CPF">
+        </div>
+
+        <div class="field">
+          <input id="email" type="text" placeholder="Email">
+        </div>
+
+      </div>
+    </div>
+
+    <div onclick="saveCustomers()" class="ui button green" tabindex="0"><i class="save icon"></i> Salvar</div>
+
+  </form>
+
+  <form style="display: none; position : relative; width: 300px;" id="modalDelete"
+    class="jquery-modal ui form modalInserCostumer">
+    <label>
+      <h4>Deseja realmente exluir o Item?</h4>
+    </label><br></br>
+    <div class="field small">
+      <input class="  small" disabled id="id_delete" type="text" name="shipping[first-name]" placeholder="Codigo">
+    </div><br></br>
+    <div onclick="deleteCustomers()" class="ui button green" tabindex="0"><i class="chevron circle down icon"></i> Sim
+    </div>
+    <a href="#close-modal" rel="modal:close" class="item ui button orange"><i class="circle notch icon"></i> Não</a>
+  </form>
+
+  <table class="ui celled padded table">
+    <thead>
+      <tr>
+        <th width="2%">ID</th>
+        <th width="15%">NOME</th>
+        <th width="15%">CPF</th>
+        <th width="15%">EMAIL</th>
+        <th width="5%"></th>
+        <th width="5%"></th>
+      </tr>
+    <tbody class="cutomers"></tbody>
+    </thead>
+  </table>
+</body>
+</html>
