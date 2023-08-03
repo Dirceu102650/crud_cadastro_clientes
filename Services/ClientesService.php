@@ -9,7 +9,7 @@ class ClientesService extends db
     public static function  showCustomers()
     {
         $mysql = new db();
-        $sql = "SELECT * FROM tab_clientes";
+        $sql = "SELECT id, nome, cpf, email,  (select count(*) from tab_clientes) as total FROM tab_clientes";
         $res = $mysql->select($sql);
         print_r(json_encode($res));
     }
