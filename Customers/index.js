@@ -94,8 +94,8 @@ const paginationList = (page) => {
       sessionStorage.setItem("paginationFinal", 42)
       break;
     default:
-      sessionStorage.setItem("paginationInicial", 42)
-      sessionStorage.setItem("paginationFinal", 48)
+      sessionStorage.setItem("paginationInicial", 0)
+      sessionStorage.setItem("paginationFinal", 6)
   }
 
   window.location.reload(true);
