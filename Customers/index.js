@@ -19,10 +19,12 @@ ObjectCustomers()
 
     const responseCustomers = JSON.parse(customers)
 
-    const HtmlOptions = responseCustomers.map((customer) => {
+    const HtmlOptions = responseCustomers.map((customer, i) => {
+
+      if (i < paginationFinal && i >= paginationInicial) {
 
       return ` <option id="selected-${customer.id}"  value="${customer.id}">${customer.id} - ${customer.nome}</option>`
-
+      }
     })
 
 
