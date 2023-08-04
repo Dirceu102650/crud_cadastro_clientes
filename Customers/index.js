@@ -33,7 +33,7 @@ ObjectCustomers()
       if (indice < paginationFinal && indice >= paginationInicial) {
         return `<tr id="dataTr">
                    <td width="2%" id="selectedId">${customer.id}</td>
-                   <td width="15%" >${customer.nome}</td>
+                   <td width="15%" id="selectedName" >${customer.nome}</td>
                    <td width="15%" >${customer.cpf}</td>
                    <td width="15%" >${customer.email}</td>
                    <td width="5%" ><div onclick="confirmDelete(${customer.id})" class="ui button red" tabindex="0"><i class="trash alternate icon"></i> Excluir</div></td>
@@ -166,8 +166,8 @@ const confirmDelete = async (id) => {
     showClose: true
   })
 }
+const myFunctionSelect = () => {
 
-$(document).change('#select', function () {
   const nameFilter = $('#select').val().toLowerCase()
 
   $('.cutomers').find('tr').each(function () {
@@ -177,4 +177,21 @@ $(document).change('#select', function () {
     $(this).closest('#dataTr').css('display', viewFilter ? 'table-row' : 'none')
 
   })
-})
+}
+
+const myFunctionSearch = () => {
+
+  const nameFilter = $('#search-input').val().toLowerCase()
+
+  $('.cutomers').find('tr').each(function () {
+
+    const textFilter = $(this).find('#selectedName').text()
+
+    const viewFilter = textFilter.toLowerCase().indexOf(nameFilter) >= 0
+
+    $(this).closest('#dataTr').css('display', viewFilter ? 'table-row' : 'none')
+
+  })
+
+}
+

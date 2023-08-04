@@ -14,6 +14,8 @@
 
 <body>
 
+  <div class=" ui container">
+
   <div class="ui three item menu">
     <a onclick="openModalCustomers()" class="active item">Cadastrar Clientes</a>
     <a class="item">Reviews</a>
@@ -27,16 +29,13 @@
       <label>Filtros</label>
       <div class="fields">
         <div class="field">
-          <select id="select" class="select ui dropdown"></select>
+          <select  onchange="myFunctionSelect()" id="select" class="select ui dropdown"></select>
         </div>
-        <div class="field">
-          <input disabled type="text" name="shipping[first-name]" placeholder="Filtrar...">
-        </div>
-        <div class="field">
-          <input disabled type="text" name="shipping[first-name]" placeholder="Filtrar...">
-        </div>
-        <div class="field">
-          <input disabled type="text" name="shipping[first-name]" placeholder="Filtrar...">
+        <div class="field ">
+          <div class="ui icon input">
+            <input id="search-input" onkeyup="myFunctionSearch()" type="text" placeholder="Search...">
+            <i class="search icon"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -76,11 +75,12 @@
   <form style="display: none; position : relative; width: 300px;" id="modalDelete"
     class="jquery-modal ui form modalInserCostumer">
     <label>
-      <h4>Deseja realmente exluir o Item?</h4>
-    </label><br></br>
-    <div class="field small">
-      <input class="  small" disabled id="id_delete" type="text" name="shipping[first-name]" placeholder="Codigo">
-    </div><br></br>
+      <h4>Deseja realmente exluir o Item  ?</h4>
+    </label><br>
+    <div class="ui small  input">
+      <input disabled id="id_delete" type="text" name="shipping" placeholder="Codigo">
+    </div>
+    <br></br>
     <div onclick="deleteCustomers()" class="ui button green" tabindex="0"><i class="chevron circle down icon"></i> Sim
     </div>
     <a href="#close-modal" rel="modal:close" class="item ui button orange"><i class="circle notch icon"></i> Não</a>
@@ -100,5 +100,7 @@
     </thead>
   </table>
   <div class="ui pagination menu page"></div>
+
+</div>
 </body>
 </html>
