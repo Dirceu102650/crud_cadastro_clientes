@@ -1,7 +1,8 @@
 
 
-let paginationInicial = sessionStorage.getItem("paginationInicial")
-let paginationFinal = sessionStorage.getItem("paginationFinal")
+let paginationInicial = sessionStorage.getItem("paginationInicial") || 0
+let paginationFinal = sessionStorage.getItem("paginationFinal") || 6
+
 const ObjectCustomers = async () => {
 
   const customers = new ClientesService();
