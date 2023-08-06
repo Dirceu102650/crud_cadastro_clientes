@@ -1,7 +1,7 @@
 
 
 let paginationInicial = sessionStorage.getItem("paginationInicial") || 0
-let paginationFinal = sessionStorage.getItem("paginationFinal") || 6
+let paginationFinal = sessionStorage.getItem("paginationFinal") || 4
 
 const ObjectCustomers = async () => {
 
@@ -23,7 +23,7 @@ ObjectCustomers()
 
       if (i < paginationFinal && i >= paginationInicial) {
 
-      return ` <option id="selected-${customer.id}"  value="${customer.id}">${customer.id} - ${customer.nome}</option>`
+        return ` <option id="selected-${customer.id}"  value="${customer.id}">${customer.id} - ${customer.nome}</option>`
       }
     })
 
@@ -47,7 +47,7 @@ ObjectCustomers()
 
     const HtmlPagination = responseCustomers.map((customer, indice) => {
 
-      if (indice < customer.total / 6) {
+      if (indice < customer.total / 4) {
 
         const page = countPagination++
 
@@ -67,42 +67,44 @@ const paginationList = (page) => {
   switch (page) {
     case 1:
       sessionStorage.setItem("paginationInicial", 0)
-      sessionStorage.setItem("paginationFinal", 6)
+      sessionStorage.setItem("paginationFinal", 4)
       break;
     case 2:
-      sessionStorage.setItem("paginationInicial", 6)
-      sessionStorage.setItem("paginationFinal", 12)
+      sessionStorage.setItem("paginationInicial", 4)
+      sessionStorage.setItem("paginationFinal", 8)
       break;
     case 3:
-      sessionStorage.setItem("paginationInicial", 12)
-      sessionStorage.setItem("paginationFinal", 18)
+      sessionStorage.setItem("paginationInicial", 8)
+      sessionStorage.setItem("paginationFinal", 12)
       break;
     case 4:
-      sessionStorage.setItem("paginationInicial", 18)
-      sessionStorage.setItem("paginationFinal", 24)
+      sessionStorage.setItem("paginationInicial", 12)
+      sessionStorage.setItem("paginationFinal", 16)
       break;
     case 5:
-      sessionStorage.setItem("paginationInicial", 24)
-      sessionStorage.setItem("paginationFinal", 30)
+      sessionStorage.setItem("paginationInicial", 16)
+      sessionStorage.setItem("paginationFinal", 20)
       break;
     case 6:
-      sessionStorage.setItem("paginationInicial", 30)
-      sessionStorage.setItem("paginationFinal", 36)
+      sessionStorage.setItem("paginationInicial", 20)
+      sessionStorage.setItem("paginationFinal", 24)
       break;
     case 7:
-      sessionStorage.setItem("paginationInicial", 36)
-      sessionStorage.setItem("paginationFinal", 42)
+      sessionStorage.setItem("paginationInicial", 24)
+      sessionStorage.setItem("paginationFinal", 28)
       break;
     default:
       sessionStorage.setItem("paginationInicial", 0)
-      sessionStorage.setItem("paginationFinal", 6)
+      sessionStorage.setItem("paginationFinal", 4)
   }
 
   window.location.reload(true);
 }
 
 const openModalCustomers = () => {
-
+  $('.name').hide()
+  $('.cpf').hide()
+  $('.email').hide()
   $('#modalInserCostumer').modal({
     escapeClose: false,
     clickClose: false,
@@ -112,7 +114,9 @@ const openModalCustomers = () => {
 }
 
 const editModalCustomers = (id, nome, cpf, email) => {
-
+  $('.name').hide()
+  $('.cpf').hide()
+  $('.email').hide()
   $('#modalInserCostumer').modal({
     escapeClose: false,
     clickClose: false,
@@ -139,6 +143,29 @@ const saveCustomers = async () => {
     await customers.saveCustomers(id, nome, cpf, email)
 
     window.location.reload(true);
+
+  } else if (nome == '') {
+    $('.name').show()
+
+  } else {
+
+    $('.name').hide()
+  } 
+  
+  if (cpf == '') {
+    $('.cpf').show()
+
+  } else {
+    $('.cpf').hide()
+
+  } 
+
+  if (email == '') {
+    $('.email').show()
+
+  } else {
+
+    $('.email').hide()
 
   }
 
